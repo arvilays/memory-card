@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Jersey+15&display=swap");
+/* fonts: "jersey 15" */
+
+body {
+  background-image: url("../assets/background.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  margin: 0;
+  height: 100vh;
+  font-family: "jersey 15";
+  font-size: 16px;
+}
+
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 4em;
+}
+
+/*##############################################
+||                   SCORE                    ||
+##############################################*/
+@media only screen and (min-width: 0px) {
+  .score {
+    background-color: hsla(0, 0%, 100%, 50%);
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    padding: 8px;
+    border: 1px solid black;
+    border-bottom-left-radius: 10px;
+  }
+}
+
+/*##############################################
+||                 CONTAINER                  ||
+##############################################*/
+@media only screen and (min-width: 0px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 30px;
+  }
+
+  .title {
+    background-color: white;
+    font-size: 3em;
+    margin: 0 auto;
+    padding: 0px 30px;
+    width: fit-content;
+    border: 2px solid black;
+    border-radius: 20px;
+  }
+
+  .description {
+    font-size: 1.25em;
+    font-weight: 100;
+    text-decoration: underline;
+    text-align: center;
+    margin-top: -40px;
+  }
+}
+
+/*##############################
+||      POKEMON SQUARES       ||
+##############################*/
+@media only screen and (min-width: 0px) {
+  .squares {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    width: 100%;
+  }
+
+  .pokemon {
+    background-color: hsla(0, 0%, 100%, 60%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border: 2px solid white;
+    border-radius: 20px;
+    transition: 0.2s border;
+  }
+
+  .pokemon:hover {
+    cursor: pointer;
+    border: 2px solid black;
+  }
+
+  .pokemon-name {
+    font-size: 2em;
+    opacity: 50%;
+  }
+}
