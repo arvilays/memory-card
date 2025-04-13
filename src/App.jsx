@@ -4,7 +4,7 @@ function App() {
   const SIZE = 12;
   const [loading, setLoading] = useState(true);
   const [pokemonList, setPokemonList] = useState([]);
-  const [pokemonClicked, setPokemonClicked] = useState([]);
+  const [pokemonClicked, setPokemonClicked] = useState(new Set());
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
 
@@ -17,8 +17,16 @@ function App() {
     setPokemonList(shuffled);
   };
 
-  function handlePokemonClick() {
-    if (score == 10) handleResetScore();
+  function handlePokemonClick(id) {
+    if (pokemonClicked.has(id)) {
+      handleResetScore();
+      setPokemonClicked(new Set());
+    } else {
+      const newSet = new Set(pokemonClicked);
+      newSet.add(id);
+      setPokemonClicked(newSet);
+    };
+    
     handleAddScore();
     shufflePokemon();
   }
@@ -97,7 +105,7 @@ function App() {
         </div>
         <div className="squares">
           {pokemonList.map((pokemon) => (
-            <div className="pokemon" key={pokemon.id} onClick={handlePokemonClick}>
+            <div className="pokemon" key={pokemon.id} onClick={() => handlePokemonClick(pokemon.id)}>
               <div className="pokemon-name">{pokemon.name}</div>
               <img
                 src={pokemon.sprites.other["official-artwork"].front_default}
